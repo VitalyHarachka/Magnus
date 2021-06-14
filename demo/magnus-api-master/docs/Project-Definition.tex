@@ -1,0 +1,222 @@
+\documentclass[11pt]{report}
+\usepackage{natbib}
+\usepackage{url}
+%opening
+\title{\textbf{Mangus Frater} \\ Project Definition Document}
+\author{Callum Axon, Callum Carney, Jordan Brightmore, \\ Finlay McKinnon, Vital Harachka, Wing Lam Chiang}
+
+\begin{document}
+
+\maketitle
+
+\chapter{Project Definition Document}
+
+\section{Introduction}
+The purpose of this project is to create a system to help monitor who is on campus using facial recognition technology. This will help the Security Department of Nottingham Trent University identify the location of students and staff on campus at any one time, as well as providing a historical data on where people have been. 
+
+Having a discussion as a group about how easy it can be to access Clifton Campus as a member of the public prompted the idea, especially with topics such as school shootings and violence in the news ~\citep{bbcarticle}. Whilst this isn't as applicable in the United Kingdom, it still has to be in mind with the threat of terrorism and violence.
+Not only will it help with more extreme incidents but when it comes to hate crimes, it can be used to identify individuals reported by students, or members of staff using historical location data tracked by the application.
+Research suggests that enterprise level solutions already exist out there  ~\citep{facefirst}, but they seem to be based primarily in the United States. Whilst they cite that education is an industry they are assisting in, it does not seem like one of their priorities and might not provide a bespoke solution for a University, which justifies a project such as this.
+
+\section{Aims and Objectives}
+The aim of the project is to create a facial recognition security software for the university. With so many student, staff and visitors on campus at any one time it can be difficult to account for everybody. This is particularly pertinent on Clifton Campus where the public can easily enter on foot. 
+
+Identifying those on campus will help to make it a safer place by identifying potential security risks and make things more manageable in the event of an emergency; where an evacuation might be required. The main components of the application will consist of:
+\begin{itemize}
+	\item software using a camera(s) to identify faces walking around campus using a neural network
+	\item software allowing members of security staff to monitor campus and the information gathered by the cameras
+	\item software allowing the enrolment of students and adding visitors
+\end{itemize}
+There is no doubt, taking into account the time constraints of the project, it is a significant undertaking and thus the group needs to be realistic about to what extent the objectives can be met in their entirety. To facilitate this the project will be using a limited data set to establish a proof of concept in an effort to demonstrate the functionality of such a system.
+
+\section{Functional Requirements}
+
+The following functional requirements have been identified for the core recognition system:
+\begin{itemize}
+	\item FR1: The program must be able to detect faces from a live camera feed
+	\item FR2: The program must be able to detect faces from known matches
+	\item FR3: The program must be able to detect, store and alert administration or security about unknown faces
+	\item FR4: The program must be able to add faces to the trained model as new students join the university
+	\item FR5: Temporary visitors must be able to marked by the security department
+\end{itemize}
+
+The following function requirements have been identified for the monitoring and administration system:
+\begin{itemize}
+	\item FR6: The program must be able to add new faces to the data store 
+	\item FR7: The program must be able to add temporary users for visitors and contractors
+	\item FR8: The program must be able to show the security staff the results of the feed and any identification
+	\item FR9: The program must be able to show historical trends in certain regions, and where individuals have been
+\end{itemize}
+
+\section{Project Management}
+
+\subsection{Meetings}
+Currently, the idea of the group meeting at least once a week during term time is in place, this may be altered and increased dependent on any deadlines that the group decide are enough of an impact to call extra meetings. The current meetings have an estimated length of 30 minutes to an hour, being held in a work-appropriate environment, such as a meeting room
+
+It is possible that there will be instances in which not all the group will be able to meet. This may be caused through a great many scenario, each of which should be able to be resolved, given consideration and following a standard procedure. Some of the scenarios, and correct procedures to take in the event of said scenario, can be seen below:
+
+\subsubsection{General Absence}
+In the case of a general absence, being that a member of the group is absent without meaningful reason, the group may have to consider the situation the absent member may be in. The consideration being the current group position, the importance of the absent member's role, or contribution that may have been needed in the current session. In this event, the group may need to note down the general absence and keep track of the amount each member has committed, as many of these may show a lack of commitment to the project.
+A given example of this scenario is - "Marcus missed the meeting because he went to go see a movie."
+
+\subsubsection{Authorised Absence}
+In the event of an authorised absence, in which the member who is absent has given compelling reason and possibly proof if required, the member would be excused from the current session. For this scenario to be distinguishable from a general absence is down to a few possibilities: forewarning of absence with given reasoning and a group consensus to pass this absence, an event in which the member would not be able to attend due to reasoning outside of their control, or an unavoidable event where the member has no real ability to alter
+A given example of this scenario is - "Jess couldn't make it to the meeting as she had a medical appointment."
+
+\subsubsection{Absence Procedure}
+In either of the circumstances mentioned above, the same procedure is taken. This is to ensure that the missing member will be able to catch up on the meeting that they missed, allowing for minimal drawbacks from the absence. For a team member to be considered 'fully informed, for the meeting of absence, the team must follow the stages below.
+A team member(s) who was present in said meeting must contact the absentee, giving a small briefing as well as the minutes of the meeting. This should be followed with any decisions or changes decided within the meeting,  if not already noted down in the minuets. Furthermore, the absentee should be asked if they have any questions about the information given to them, to ensure that they are sound minded on the group's current position, as well as each individual's tasks.
+
+\subsection{Management}
+For the project to be kept on track with minimal disturbances to the final product, there must be a set of standards within the group. These include the ability to track and keep information regarding the group members and their contribution within the project.
+
+\subsubsection{Project Manager}
+A member should be elected as Project Manager (PM), the role responsible to tracking information on the group members, as well as being the first to act on any events which may disrupt the project. PM will handle the attendance of the group during all forms of meetings, as well as the punctuality of tasks from each of the group. It will be the PM's duty to talk to any members who show deviation from a consistent work ethic, ensuring that the member knows their tasks and is on track. If the PM finds the need to call a discussion with the group on a member's behaviour and commitment toward the project they can initiate a vote to exclude the member from the group, with warning and consultation.
+The PM may find it useful to pass off a secondary role to another team member to ensure that the project is being fully watched. The deputy should report back to the PM with any extra information they have found to be added to their current information on the group.
+
+\subsubsection{Task Allocation}
+For the group to work as well as they can with minimal conflict, when a task is presented to the group they will be asked to whom would like to take on said task. If there is a conflict on the task allocation, it may be able to split the task into smaller subtasks; thus, allowing for multiple members to work on it. However, if the situation does not allow for this then a fair discussion will be made to decide which member will be assigned the task. Upon being assigned a task, the member will be given a deadline for the task to be complete, the deadline may be flexible, allowing for the member to negotiate and discuss with the team.
+When each member of the team is working on a task, the PM will ask for progress reports at intervals throughout each task. The PM will report to the team if any anomalies occur, allowing the team to propose ideas to ensure completion before its deadline.
+
+
+\section{Team Members, Responsibilities \& Skills}
+Due to we are going to build a facial recognition software, which is use for monitor student’s movements and trends on the campus. We will break the whole software to three sub-components, there are facial recognition, backend database API and monitoring application. So, everyone will take responsibility for one of the component. 
+
+\subsection{Callum Axon -  Project Manager}
+\textbf{Component:} Backend Database \& API \\
+Relevant Skills:
+\begin{itemize}
+	\item PHP
+	\item MYSQL \& MSSQL
+	\item UML Tooling and Diagramming
+	\item Sever Management in Unix
+\end{itemize}
+
+\subsection{Callum Carney}
+\textbf{Component:} Monitoring Application 
+Relevant Skills:
+\begin{itemize}
+	\item HTML \& CSS (Sass PreProcessor)
+	\item JavaScript
+	\item Testing
+	\item Screen \& Graphic Design 
+\end{itemize}
+\subsection{Finlay McKinnon}
+\textbf{Component:} Monitoring Application
+\begin{itemize}
+	\item HTML \& CSS
+	\item Databases
+	\item Screen \& Graphic Design 
+\end{itemize}
+
+\subsection{Jordan Brightmore}
+\textbf{Component:} Facial Recognition Software
+\begin{itemize}
+	\item Python
+	\item Machine Learning
+	\item Raspbian
+	\item Computer Vision
+\end{itemize}
+
+\subsection{Vital Harachka}
+\textbf{Component:} Backend Database \& API
+\begin{itemize}
+	\item Databases (SQL)
+	\item PHP
+\end{itemize}
+
+
+\subsection{Wing Lam Chiang}
+\textbf{Component:} Backend Database \& API
+\begin{itemize}
+	\item PHP
+	\item Databases (SQL)
+\end{itemize}
+
+
+\section{Sources}
+See bibliography.
+
+\section{Risk Assessment}
+The following risks have been identified:
+\subsection{RE1: Team Member is Incapacitated}
+\textit{Team member is ill, injured or cannot work on project due to personal reasons.}
+\textbf{Impact:} High \\
+\textbf{Probability:} Low\\
+\textbf{Response:} Reorganise workload to cover team member.
+
+\subsection{RE2: Busy Period in Term}
+\textit{Team member cannot attend meetings at the specified time due to busy schedule.}\\
+\textbf{Impact:} Medium \\
+\textbf{Probability:} Low\\
+\textbf{Response:} Organise more meetings at everyone's time schedule.
+
+\subsection{RE3: Failure to Complete Work}
+\textit{Team member consistently not doing work, time schedule falls at least a week behind.}\\
+\textbf{Impact:} High \\
+\textbf{Probability:} Medium\\
+\textbf{Response:} Assign multiple members to the same task, meet with member to resolve issue.
+
+\subsection{RE4: Lack of Understanding}
+\textit{Team member consistently not doing work, time schedule falls at least a week behind.}\\
+\textbf{Impact:} Medium \\
+\textbf{Probability:} Low\\
+\textbf{Response:} Reorganise work to suit strengths of members, assign multiple members to same task.
+
+\subsection{RE5: Data Loss}
+\textit{Team member consistently not doing work, time schedule falls at least a week behind.}\\
+\textbf{Impact:} High \\
+\textbf{Probability:} Medium\\
+\textbf{Response:} Consistently backup data to cloud.
+
+\subsection{RE6: Deadline Changes}
+\textit{Team member consistently not doing work, time schedule falls at least a week behind.}\\
+\textbf{Impact:} Medium \\
+\textbf{Probability:} Low\\
+\textbf{Response:} If deadline is earlier than before, change work schedule to account for it.
+
+\subsection{RE7: Missed Deadlines}
+\textit{Team member consistently not doing work, time schedule falls at least a week behind.}
+\textbf{Impact:} Very High \\
+\textbf{Probability:} Low\\
+\textbf{Response:} Workload reorganised to complete project ahead of schedule, meetings to identify problems causing missed deadlines. 
+
+\section{Professional, Social, Ethical and Legal Issues}
+
+
+\subsection{Legal Issues}
+\textbf{Security}
+\begin{itemize}
+	\item Unauthorised entities viewing sensitive facial recognition data
+	\item Transmission of sensitive facial recognition data over networked devices
+\end{itemize}
+
+\subsection{Privacy Concerns}
+\begin{itemize}
+	\item Use of facial recognition technology could infringe on individuals autonomy and their civil liberties
+	\item Consent to store image of face
+\end{itemize}
+
+\subsection{Ethical Issues}
+Adapted From: \citep{privacy1}
+\subparagraph{Collection}
+Adding somebodies face into the database must be with his or hers consent. 
+\subparagraph{Sharing}
+Facial recognition data must not be sold onto third parties without the consent of the individuals.
+\subparagraph{Access}
+An data subject must have the right to access, correct or delete their facial recognition data where appropriate
+\subparagraph{Accountability}
+The system must have a record of changes, use and sharing of information in a facial recognition system.
+\subparagraph{Government Access}
+Facial recognition data is not covered by the Data Protection Act, should only be authorised with a warrant issued and where the data can be used to solve a crime.
+Children and Teens. 
+Parental consent is necessary with children under 13 in order to use facial recognition system on them. Safe guarding training must be given to operators of the system to ensure they know the implications of the data stored on individuals less than 13 years old. 
+
+\section{Project Milestones and Planning}
+The group will be utilising a service called trello which involves the usage of cards which allow notes to be made, task assignments and a check-list to ensure that requirements can be met in their entirety \citep{trello}. The group feels this more agile approach will facilitate better communication and allow the agile concept of "sprints" to be implemented. A sprint defines a set time period upon a certain set of tasks are to be completed \citep{sprint}. These tasks will also be mapped out into a GANTT chart to provide a longer-term overview of the project, its tasks and allocated resources.
+
+\bibliographystyle{agsm}
+\bibliography{citation}
+
+
+\end{document}

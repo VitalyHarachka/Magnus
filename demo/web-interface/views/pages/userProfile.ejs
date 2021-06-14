@@ -1,0 +1,267 @@
+<html>
+
+<head>
+    <% include ../partials/header.ejs %>
+    <meta name="_csrf" content='<%- csrfToken %>'>
+    <link href="../../public/assets/vendor/nucleo/css/nucleo.css" rel="stylesheet">
+</head>
+
+<body>
+    <% include ../partials/nav.ejs %>
+
+    <!-- Main content -->
+    <div class="main-content">
+        <!-- Gradient Header -->
+        <div class="header bg-gradient-default pb-8 pt-5 pt-md-8">
+            <div class="container-fluid" style="height: 123px">
+                <div class="header-body">
+
+                    <!-- Profile Picture -->
+                    <img id="userProfilePicture" class="img-profilePicture" src="https://pbs.twimg.com/profile_images/826147239533879296/xLlIRwOP_400x400.jpg"
+                        alt="Profile Picture" style="
+                        width: 200px;
+                        height: 200px;
+                        border-radius: 50%;
+                        margin-right: 50;
+                        float: left; " />
+
+                    <!-- Profile Infomation -->
+                    <div class="card card-frame" style="width: 50rem; float: left; bottom: 20">
+                        <div class="card-body">
+                            <h1 id="userName">John Smith</h1>
+                            <h2 id="userCourse">Computer Science (BSc) <br> </h2>
+                            <p1 id="userYear">1st Year <br> </p1>
+                        </div>
+                    </div>
+                    <!-- Current Location -->
+                    <div class="card card-frame" style="width: 50rem; bottom: 9px; float: left; height: 75px">
+                        <div class="card-body" style="padding-top: 15px;">
+                            <h3 class="card-title text-uppercase text-muted mb-0" style="height: 20px">Current Location
+                                : </h3>
+                            <p id="userCurrentLocation"> Pavillion</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Attendance Info -->
+                <div class="row mb-4">
+                    <div class="col-lg-6">
+                        <div class="card card-stats" style="width: 20rem; height: 160px; left: 100px; bottom: 20">
+                            <!-- Card body -->
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <h3 class="card-title text-uppercase text-muted mb-0">Attendance</h3>
+                                        <span id="userAttendance" class="h1 font-weight-bold mb-0"></span>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="icon icon-shape bg-green text-white rounded-circle shadow">
+                                            <i class="fas fa-check"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="mt-4 mb-0 text-sm">
+                                    <span id="userAttendanceDelta"></i></span>
+                                    <span class="text-nowrap">Since last month</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Favoured Location -->
+                        <div class="card card-frame" style="width: 20rem; bottom: 9px; left: 100px; height: 75px">
+                            <div class="card-body" style="padding-top: 15px;">
+                                <h3 class="card-title text-uppercase text-muted mb-0" style="height: 20px">Favoured
+                                    Location : </h3>
+                                <p id="userFavouredLocation">  Pavillion</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Top navbar -->
+            <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
+                <div class="container-fluid">
+                    <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="./index.html">User Profile</a>
+                </div>
+            </nav>
+        </div>
+        <!-- ########################################################  End of Header ######################################################## -->
+
+        <!-- Detections Table -->
+        <div class="container-fluid">
+            <div class="row mt-5">
+                <div class="col-xl-8 mb-5 mb-xl-0">
+                    <div class="card shadow">
+                        <div class="card-header border-0">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    <h3 class="mb-0">Camera detections</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <!-- Projects table -->
+                            <table class="table align-items-center table-flush">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th scope="col">Camera Location</th>
+                                        <th scope="col">Time Of Entrance</th>
+                                        <th scope="col">Time Of Exit</th>
+                                        <th scope="col">Academic</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th id="userDetectionLocation1" scope="row"> Clifton Library </th>
+                                        <td id="userDetectionEnterance1"> 18 : 04 </td>
+                                        <td id="userDetectionExit1"> - </td>
+                                        <td id="userDetectionAccademic1"> No </td>
+                                    </tr>
+                                    <tr>
+                                        <th id="userDetectionLocation2" scope="row"> Courtyard </th>
+                                        <td id="userDetectionEnterance2"> 17 : 57 </td>
+                                        <td id="userDetectionExit2"> 18 : 03 </td>
+                                        <td id="userDetectionAccademic2"> No </td>
+                                    </tr>
+                                    <tr>
+                                        <th id="userDetectionLocation3" scope="row"> Mary Ann Evans </th>
+                                        <td id="userDetectionEnterance3"> 16 : 55 </td>
+                                        <td id="userDetectionExit3"> 17 : 56 </td>
+                                        <td id="userDetectionAccademic3"> Yes </td>
+                                    </tr>
+                                    <tr>
+                                        <th id="userDetectionLocation4" scope="row"> Courtyard </th>
+                                        <td id="userDetectionEnterance4"> 16 : 50  </td>
+                                        <td id="userDetectionExit4"> 16 : 54 </td>
+                                        <td id="userDetectionAccademic4"> No </td>
+                                    </tr>
+                                    <tr>
+                                        <th id="userDetectionLocation5" scope="row">  The Point </th>
+                                        <td id="userDetectionEnterance5"> 15 : 40 </td>
+                                        <td id="userDetectionExit5"> 16 : 50 </td>
+                                        <td id="userDetectionAccademic5"> No </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Activity Table -->
+                <div class="col-xl-4">
+                    <div class="card shadow">
+                        <div class="card-header border-0">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    <h3 class="mb-0">Campus Activity</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <!-- Projects table -->
+                            <table class="table align-items-center table-flush">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th  scope="col">Location</th>
+                                        <th  scope="col">Visits</th>
+                                        <th scope="col">Total Time</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th id="userActivityLocaiton1" scope="row"> The Point </th>
+                                        <td id="userActivityVisits1"> 332 </td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <span id="userActivityTotal1" class="mr-2">350 hrs</span>
+                                                <div>
+                                                    <div class="progress">
+                                                        <div id="bar-userActivityTotal1" class="progress-bar bg-gradient-danger" role="progressbar"
+                                                            aria-valuenow="35%" aria-valuemin="0" aria-valuemax="100"
+                                                            style="width: 35%;"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th id="userActivityLocaiton2" scope="row"> Clifton Library </th>
+                                        <td id="userActivityVisits2"> 278 </td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <span id="userActivityTotal2" class="mr-2">260 hrs</span>
+                                                <div>
+                                                    <div class="progress">
+                                                        <div id="bar-userActivityTotal2" class="progress-bar bg-gradient-success" role="progressbar"
+                                                            aria-valuenow="26" aria-valuemin="0" aria-valuemax="100"
+                                                            style="width: 26%;"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th id="userActivityLocaiton3" scope="row"> Mary Ann Evans </th>
+                                        <td id="userActivityVisits3"> 248 </td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <span id="userActivityTotal3" class="mr-2">242 hrs</span>
+                                                <div>
+                                                    <div class="progress">
+                                                        <div id="bar-userActivityTotal3" class="progress-bar bg-gradient-default" role="progressbar"
+                                                            aria-valuenow="24" aria-valuemin="0" aria-valuemax="100"
+                                                            style="width: 24%;"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th id="userActivityLocaiton4" scope="row">  Erasmus Darwin </th>
+                                        <td id="userActivityVisits4"> 107 </td>
+                                        <td> 
+                                            <div class="d-flex align-items-center">
+                                                <span id="userActivityTotal4" class="mr-2">102 hrs</span>
+                                                <div>
+                                                    <div class="progress">
+                                                        <div id="bar-userActivityTotal4" class="progress-bar bg-gradient-info" role="progressbar"
+                                                            aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"
+                                                            style="width: 10%;"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th id="userActivityLocaiton5" scope="row">  New Hall Block  </th>
+                                        <td id="userActivityVisits5"> 14 </td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <span id="userActivityTotal5" class="mr-2">6 hrs &nbsp &nbsp</span>
+                                                <div>
+                                                    <div class="progress" >
+                                                        <div id="bar-userActivityTotal5" class="progress-bar bg-gradient-warning" role="progressbar"
+                                                            aria-valuenow="6" aria-valuemin="0" aria-valuemax="100"
+                                                            style="width: 6%;"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <% include ../partials/footer.ejs %>
+    <script src="http://magnus.vulns.co.uk/assets/js/populateProfile.js"></script>
+
+</body>
+
+</html>

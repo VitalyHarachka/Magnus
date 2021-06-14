@@ -1,0 +1,149 @@
+<html>
+
+<head>
+    <% include ../partials/header.ejs %>
+    <meta name="_csrf" content='<%- csrfToken %>'>
+</head>
+
+<body>
+    <% include ../partials/nav.ejs %>
+    <!-- Main content -->
+    <div class="main-content">
+        <!-- Top navbar -->
+        <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
+            <div class="container-fluid">
+                <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="./index.html">Dashboard</a>
+            </div>
+        </nav>
+        <!-- Header -->
+        <div class="header bg-gradient-default pb-8 pt-5 pt-md-8">
+            <div class="container-fluid">
+                <div class="header-body">
+                    <!-- Card stats -->
+                    <div class="row">
+                        <div class="col-xl-3 col-lg-6">
+                            <div class="card card-stats mb-4 mb-xl-0">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col">
+                                            <h5 class="card-title text-uppercase text-muted mb-0">Total People Enrolled</h5>
+                                            <span class="h2 font-weight-bold mb-0"><%=dashboardData.data.totalEnrolled%></span>
+                                        </div>
+                                        <div class="col-auto">
+                                            <div class="icon icon-shape bg-info text-white rounded-circle shadow">
+                                                <i class="fas fa-globe-europe"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-6">
+                            <div class="card card-stats mb-4 mb-xl-0">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col">
+                                            <h5 class="card-title text-uppercase text-muted mb-0">New People</h5>
+                                            <span class="h2 font-weight-bold mb-0"><%=dashboardData.data.recentNewEnrolled%></span>
+                                        </div>
+                                        <div class="col-auto">
+                                            <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
+                                                <i class="fas fa-users"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-6">
+                                <div class="card card-stats mb-4 mb-xl-0">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col">
+                                                <h5 class="card-title text-uppercase text-muted mb-0">Valid Detections</h5>
+                                                <span class="h2 font-weight-bold mb-0"><%=dashboardData.data.validDetections%></span>
+                                            </div>
+                                            <div class="col-auto">
+                                                <div class="icon icon-shape bg-green text-white rounded-circle shadow">
+                                                    <i class="fas fa-check-circle"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <div class="col-xl-3 col-lg-6">
+                            <div class="card card-stats mb-4 mb-xl-0">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col">
+                                            <h5 class="card-title text-uppercase text-muted mb-0">Invalid Detections</h5>
+                                            <span class="h2 font-weight-bold mb-0"><%=dashboardData.data.invalidDetections%></span>
+                                        </div>
+                                        <div class="col-auto">
+                                            <div class="icon icon-shape bg-red text-white rounded-circle shadow">
+                                                <i class="fas fa-times-circle"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid mt--7">
+            <div class="row mt-5">
+                <div class="col-xl-12 mb-5 mb-xl-0">
+                    <div class="card shadow">
+                        <div class="card-header border-0">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    <h3 class="mb-0">Camera detections</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <!-- Projects table -->
+                            <table class="table align-items-center table-flush">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th scope="col">Camera Location</th>
+                                        <th scope="col">Total Hits</th>
+                                        <th scope="col">Invalid Detections</th>
+                                        <th scope="col">Success Rate</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <% for(var i=0; i < 6; i++) { %>
+                                    <tr>
+                                        <th scope="row">
+                                            <%=dashboardData.data.cameras[i].name%>
+                                        </th>
+                                        <td>
+                                            <%=dashboardData.data.cameras[i].reports_count%>
+                                        </td>
+                                        <td>
+                                            <%=dashboardData.data.cameras[i].alerts_count%>
+                                        </td>
+                                        <td>
+                                            <%=dashboardData.data.cameras[i].success_rate%>%
+                                        </td>
+                                    </tr>
+                                            <% } %>
+                                        </tbody>
+                                    </table>
+                                </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <% include ../partials/footer.ejs %>
+
+</body>
+
+</html>

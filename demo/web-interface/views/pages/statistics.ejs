@@ -1,0 +1,142 @@
+<html>
+
+<head>
+    <% include ../partials/header.ejs %>
+    <meta name="_csrf" content='<%- csrfToken %>'>
+</head>
+
+<body>
+    <% include ../partials/nav.ejs %>
+    <!-- Main content -->
+    <div class="main-content">
+
+        <!-- Top navbar -->
+        <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
+            <div class="container-fluid">
+                <a id="test-Heading" class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="./index.html">Statistics</a>
+            </div>
+        </nav>
+        <div class="header bg-gradient-default pb-8 pt-5 pt-md-8">
+            <div class="container-fluid" style="height: 123px">
+                <div class="header-body">
+                    <!-- Card stats -->
+
+                    <button id= "button-Student" class="btn btn-icon btn-primary" type="button" style="width: 280; height: 100; float: left; margin-left: 60px; margin-right: 60px; margin-top: 30px">
+                        <i class="fas fa-user-graduate fa-4x"></i> 
+                    </button>
+
+                    <button id= "button-Staff" class="btn btn-icon btn-primary" type="button" style="width: 280; height: 100; float: left; margin-left: 60px; margin-right: 60px; margin-top: 30px">
+                       <i class="fas fa-chalkboard-teacher fa-4x"></i>
+                    </button>
+
+                    <button id= "button-Guest" class="btn btn-icon btn-primary" type="button" style="width: 280; height: 100; float: left; margin-left: 60px; margin-right: 60px; margin-top: 30px">
+                        <i class="far fa-id-badge  fa-4x"></i>
+                    </button>
+
+                    <button id= "button-General" class="btn btn-icon btn-primary" type="button" style="width: 280; height: 100; float: left; margin-left: 60px; margin-right: 60px; margin-top: 30px">
+                        <i class="fas fa-info-circle  fa-4x"></i>    
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!--* End of gradient header *-->
+
+
+        <div class="container-fluid mt--7">
+            <div class="row mt-5">
+                <div class="col-xl-8 mb-5 mb-xl-0">
+                    <div class="card shadow" style="margin-bottom: 30px">
+                        <div class="card shadow">
+                            <!--* Card init *-->
+                            <div class="card">
+                                <!-- Card header -->
+                                <div class="card-header border-0">
+                                    <!-- Title -->
+                                    <div class="row align-items-center">
+                                        <div class="col">
+                                            <h3 id="header-LVC" class="h3 mb-0">General Activity</h3>
+                                        </div>
+                                        <div class="col text-right">
+                                            <button id= "button-previous30" type="button" class="btn btn-primary btn-sm">30 Days</button>
+                                            <button id= "button-previous302" type="button" class="btn btn-primary btn-sm">60 Days</button>
+                                            <button id= "button-previous90" type="button" class="btn btn-primary btn-sm">90 Days</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Card body -->
+                                <div class="card-body">
+                                    <div id= "container-LVC"class="chart-container" style="position: relative; height:50vh; width:50vw">
+                                        <canvas id="chart-LVC"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Activity Table -->
+                <div class="col-xl-4">
+                    <div class="card shadow">
+                        <div class="card-header border-0">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    <h3 class="mb-0">Current Campus Activity</h3>
+                                </div>
+
+                            </div>
+                        </div>
+                        <table class="table table-flush" id="datatable-CCA">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th>Location</th>
+                                    <th>People</th>
+                                    <th>Percentage</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td id="CCALocation1">Point</td>
+                                    <td id="CCAPeople1">10,427</td>
+                                    <td id="CCAPercent1">27%</td>
+                                </tr>
+                                <tr>
+                                    <td id="CCALocation2">Point</td>
+                                    <td id="CCAPeople2">10,427</td>
+                                    <td id="CCAPercent2">27%</td>
+                                </tr>
+                                <tr>
+                                    <td id="CCALocation3">Point</td>
+                                    <td id="CCAPeople3">10,427</td>
+                                    <td id="CCAPercent3">27%</td>
+                                <tr>
+                                    <td id="CCALocation4">Point</td>
+                                    <td id="CCAPeople4">10,427</td>
+                                    <td id="CCAPercent4">27%</td>
+                                </tr>
+                                <tr>
+                                    <td id="CCALocation5">Point</td>
+                                    <td id="CCAPeople5">10,427</td>
+                                    <td id="CCAPercent5">27%</td>
+                                </tr>
+                                <tr>
+                                    <td id="CCALocation6">Point</td>
+                                    <td id="CCAPeople6">10,427</td>
+                                    <td id="CCAPercent6">27%</td>
+                                </tr>
+                                <tr>
+                                    <td id="CCALocation7">Point</td>
+                                    <td id="CCAPeople7">10,427</td>
+                                    <td id="CCAPercent7">27%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% include ../partials/footer.ejs %>
+        <script src="http://magnus.vulns.co.uk/assets/js/populateStatistics.js"></script>
+</body>
+
+
+</html>

@@ -1,0 +1,126 @@
+<html>
+
+<head>
+    <% include ../partials/header.ejs %>
+    <meta name="_csrf" content='<%- csrfToken %>'>
+    <link href="../../public/assets/vendor/nucleo/css/nucleo.css" rel="stylesheet">
+</head>
+
+<body>
+    <% include ../partials/nav.ejs %>
+
+    <!-- Main content -->
+    <div class="main-content">
+        <!-- Gradient Header -->
+        <div class="header bg-gradient-default pb-8 pt-5 pt-md-8">
+            <div class="container-fluid" style="height: 123px">
+                <div class="header-body">
+
+                    <!-- Profile Picture -->
+                    <img id="userProfilePicture" class="img-profilePicture" src="https://cdn1.iconfinder.com/data/icons/business-charts/512/customer-512.png"
+                        alt="Profile Picture" style="
+                        width: 200px;
+                        height: 200px;
+                        border-radius: 50%;
+                        margin-right: 50;
+                        float: left; " />
+
+                    <!-- Profile Infomation -->
+                    <div class="card card-frame" style="width: 50rem; float: left; bottom: 20">
+                        <div class="card-body">
+                            <h1 id="userName"><%=studentData.data.student.name_first + " " +studentData.data.student.name_last%></h1>
+                            <h2 id="userCourse"><%=studentData.data.student.course.name%> <br> </h2>
+                            <p1 id="userYear"><%=studentData.data.student.start_year%> <br> </p1>
+                        </div>
+                    </div>
+                    <!-- Current Location -->
+                    <div class="card card-frame" style="width: 50rem; bottom: 9px; float: left; height: 75px">
+                        <div class="card-body" style="padding-top: 15px;">
+                            <h3 class="card-title text-uppercase text-muted mb-0" style="height: 20px">Current Location
+                                : </h3>
+                            <p id="userCurrentLocation"> <%=studentData.data.student.location.camera.name%> </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Attendance Info -->
+                <div class="row mb-4">
+                    <div class="col-lg-6">
+                        <div class="card card-stats" style="width: 20rem; height: 160px; left: 100px; bottom: 20">
+                            <!-- Card body -->
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <h3 class="card-title text-uppercase text-muted mb-0">Attendance</h3>
+                                        <span id="userAttendance" class="h1 font-weight-bold mb-0">100%</span>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="icon icon-shape bg-green text-white rounded-circle shadow">
+                                            <i class="fas fa-check"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Top navbar -->
+            <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
+                <div class="container-fluid">
+                    <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="./index.html">User Profile</a>
+                </div>
+            </nav>
+        </div>
+        <!-- ########################################################  End of Header ######################################################## -->
+
+        <!-- Detections Table -->
+        <div class="container-fluid">
+            <div class="row mt-5">
+                <div class="col-xl-12 mb-5 mb-xl-0">
+                    <div class="card shadow">
+                        <div class="card-header border-0">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    <h3 class="mb-0">Camera detections</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <!-- Projects table -->
+                            <table class="table align-items-center table-flush">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th scope="col">Camera Location</th>
+                                        <th scope="col">Time Of Hit</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <% if(studentData.data.student.reports.length > 0) { %>
+                                <% for(var i=0; i < studentData.data.student.reports.length; i++) { %>
+                                    <tr>
+                                        <th id="userDetectionLocation1" scope="row">MAE Reception </th>
+                                        <td id="userDetectionEnterance1"> <%=studentData.data.student.reports[0].timestamp%> </td>
+                                    </tr>
+                                <% } %>
+                                <% } else {%>
+                                <div class="alert alert-info" role="alert">
+                                    <strong>No Results</strong> Sorry, we couldn't find any hits for this student!
+                                </div>
+                                <% } %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <% include ../partials/footer.ejs %>
+
+</body>
+
+</html>

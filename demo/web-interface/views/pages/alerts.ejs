@@ -1,0 +1,251 @@
+<html>
+
+<head>
+    <% include ../partials/header.ejs %>
+    <meta name="_csrf" id="_csrf" content='<%- csrfToken %>'>
+</head>
+
+<body class="bg-gradient-default">
+    <% include ../partials/nav.ejs %>
+    <!-- Main content -->
+    <div class="main-content">
+        <!-- Top navbar -->
+        <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
+            <div class="container-fluid">
+                <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block"
+                    href="/alerts">ALERTS</a>
+                <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
+                    <div class="form-group mb-0">
+                        <div class="input-group input-group-alternative">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-search"></i></span>
+                            </div>
+                            <input class="form-control" placeholder="Search" type="text">
+                        </div>
+                    </div>
+                </form>
+                <button data-toggle="modal" id="createContent" data-target="#modal-addUser" data-container="body" data-toggle="tooltip"
+                    data-placement="left" title="Add a new asset" class="btn btn-icon btn-primary white-tooltip"
+                    type="button">
+                    <span class="btn-inner--icon"><i class="fa fa-plus"></i></span>
+                </button>
+            </div>
+        </nav>
+
+        <div class="header bg-gradient-default pb-4 pt-2 pt-md-6">
+            <div class="container-fluid">
+                <div class="header-body">
+                </div>
+                <div class="nav-wrapper">
+                    <ul class="nav nav-pills nav-fill flex-column flex-md-row" id="tabs-icons-text" role="tablist">
+                        <li id="userTab" class="nav-item">
+                            <a class="nav-link mb-sm-3 mb-md-0 active" id="tabs-icons-text-1-tab" data-toggle="tab"
+                                href="#tabs-icons-text-1" role="tab" aria-controls="tabs-icons-text-1"
+                                aria-selected="true"><i class="fa fa-bell mr-2"></i>Alerts</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card shadow">
+                    <div class="card-body">
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="tabs-icons-text-1" role="tabpanel"
+                                aria-labelledby="tabs-icons-text-1-tab">
+                                <% if(alertData.data.alerts.length > 0) { %>
+                                <div class="table-responsive" data-toggle="list"
+                                    data-list-values="[&quot;Details&quot;, &quot;Camera&quot;, &quot;Actions&quot;]">
+                                    <table class="table align-items-center table-flush bg-white">
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th scope="col" class="sort" data-sort="Details">Details</th>
+                                                <th scope="col" class="sort" data-sort="Camera">Camera</th>
+                                                <th scope="col" class="sort" data-sort="Actions">Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="list">
+                                            <% for(var i=0; i < alertData.data.alerts.length; i++) { %>
+                                            <% if (alertData.data.alerts[i].actioned_at == null) { %>
+                                            <tr>
+                                                <th scope="row">
+                                                    Unknown person detected at - <%=alertData.data.alerts[i].timestamp %>
+                                                </th>
+                                                <td class="role">
+                                                    <%=alertData.data.alerts[i].camera.name %>
+                                                </td>
+                                                <td class="actions"><button data-toggle="modal" data-target="#modal-markAsFalseNegative"
+                                                        data-container="body" data-toggle="tooltip"
+                                                        data-id='<%= alertData.data.alerts[i].id%>' data-placement="left"
+                                                        title="Mark as false negative"
+                                                        class="markAsFalseNegative btn btn-icon btn-primary white-tooltip"
+                                                        type="button">
+                                                        <span class="btn-inner--icon"><i class="fa fa-minus-circle"></i></span>
+                                                    </button>
+                                                    <button data-toggle="modal" data-target="#modal-markAsResolved"
+                                                        data-container="body" data-toggle="tooltip"
+                                                        data-id='<%= alertData.data.alerts[i].id%>' data-placement="right"
+                                                        title="Mark as resolved"
+                                                        class="markAsResolved btn btn-icon btn-primary white-tooltip"
+                                                        type="button">
+                                                        <span class="btn-inner--icon"><i class="fa fa-clipboard-check"></i></span>
+                                                    </button></td>
+                                            </tr>
+                                            <% } %>
+                                            <% } %>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <% } else {%>
+                                <div class="alert alert-info" role="alert">
+                                    <strong>No Results</strong> Sorry, we couldn't find any assets that matched your
+                                    search query!
+                                </div>
+                                <% } %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modal-addUser" tabindex="-1" role="dialog" aria-labelledby="modal-default"
+        aria-hidden="true">
+        <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h2 class="modal-title rem1-font" id="modal-title-default">Add a new user</h2>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <form role="form" action="/users" method="POST">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="user-add-fname" class="form-control-label">First Name</label>
+                            <input minlength="3" class="form-control" name="name_first" type="text" id="user-add-fname">
+                        </div>
+                        <div class="form-group">
+                            <label for="user-add-lname" class="form-control-label">Last Name</label>
+                            <input minlength="3" class="form-control" name="name_last" type="text" id="user-add-lname">
+                        </div>
+                        <div class="form-group">
+                            <label for="user-add-username" class="form-control-label">Username</label>
+                            <input minlength="6" class="form-control" name="username" type="text"
+                                id="user-add-username">
+                        </div>
+                        <div class="form-group">
+                            <label for="user-add-email" class="form-control-label">Email</label>
+                            <input class="form-control" name="email" type="email" id="user-add-email">
+                        </div>
+                        <div class="form-group">
+                            <label for="user-add-password" class="form-control-label">Password</label>
+                            <input minlength="6" class="form-control" name="password" type="password"
+                                id="user-add-password">
+                            <input type="hidden" name="_csrf" value='<%- csrfToken %>'>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Add user</button>
+                        <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">Cancel</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modal-addCampus" tabindex="-1" role="dialog" aria-labelledby="modal-default"
+    aria-hidden="true">
+    <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h2 class="modal-title rem1-font" id="modal-title-default">Add a new campus/building</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <form role="form" action="/users" method="POST">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="user-add-fname" class="form-control-label">Campus Name</label>
+                        <input minlength="3" class="form-control" name="name_first" type="text" id="user-add-fname">
+                        <input type="hidden" name="_csrf" value='<%- csrfToken %>'>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Add</button>
+                    <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">Cancel</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+    <div class="modal fade" id="modal-markAsFalseNegative" tabindex="-1" role="dialog" aria-labelledby="modal-notification"
+        aria-hidden="true">
+        <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
+            <div class="modal-content bg-gradient-danger">
+
+                <div class="modal-header">
+                    <h2 class="modal-title rem1-font" id="modal-title-notification">Mark an alert as false negative</h6>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                </div>
+
+                <div class="modal-body">
+
+                    <div class="py-3 text-center">
+                        <p>Are you sure that this user is enrolled in the system?</p>
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="modal-markAsFalseNegativeConfirm btn btn-white">Yes</button>
+                    <button type="button" class="btn btn-link text-white ml-auto" data-dismiss="modal">Cancel</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+        <div class="modal fade" id="modal-markAsResolved" tabindex="-1" role="dialog" aria-labelledby="modal-notification"
+        aria-hidden="true">
+        <div class="modal-dialog modal-success modal-dialog-centered modal-" role="document">
+            <div class="modal-content bg-gradient-success">
+
+                <div class="modal-header">
+                    <h2 class="modal-title rem1-font" id="modal-title-notification">Mark an alert as resolved</h6>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                </div>
+
+                <div class="modal-body">
+
+                    <div class="py-3 text-center">
+                        <p>Are you sure that this alert is resolved?</p>
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="modal-markAsResolvedConfirm btn btn-white">Yes</button>
+                    <button type="button" class="btn btn-link text-white ml-auto" data-dismiss="modal">Cancel</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <% include ../partials/footer.ejs %>
+    <script src="http://magnus.vulns.co.uk/assets/js/alerts.js"></script>
+
+</body>
+
+</html>
